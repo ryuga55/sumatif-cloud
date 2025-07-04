@@ -203,29 +203,29 @@ export function Students() {
 
   if (loading) {
     return (
-      <div className="space-y-6">
-        <h1 className="text-2xl font-bold text-gray-900">Siswa</h1>
+      <div className="space-y-4 lg:space-y-6">
+        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Siswa</h1>
         <div className="animate-pulse">
-          <div className="h-32 bg-gray-200 rounded-lg"></div>
+          <div className="h-24 lg:h-32 bg-gray-200 rounded-lg"></div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Siswa</h1>
-        <div className="flex space-x-2">
-          <Button variant="secondary" onClick={exportToExcel}>
+    <div className="space-y-4 lg:space-y-6">
+      <div className="flex flex-col gap-4">
+        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Siswa</h1>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="secondary" onClick={exportToExcel} className="w-full sm:w-auto">
             <Upload className="w-4 h-4 mr-2" />
             Export Excel
           </Button>
-          <Button variant="secondary" onClick={() => setShowImportModal(true)}>
+          <Button variant="secondary" onClick={() => setShowImportModal(true)} className="w-full sm:w-auto">
             <Upload className="w-4 h-4 mr-2" />
             Import Excel
           </Button>
-          <Button onClick={() => setShowModal(true)}>
+          <Button onClick={() => setShowModal(true)} className="w-full sm:w-auto">
             <Plus className="w-4 h-4 mr-2" />
             Tambah Siswa
           </Button>
@@ -234,11 +234,11 @@ export function Students() {
 
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900">Daftar Siswa</h3>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h3 className="text-base lg:text-lg font-semibold text-gray-900">Daftar Siswa</h3>
             <div className="flex items-center space-x-2">
-              <Users className="w-5 h-5 text-gray-500" />
-              <span className="text-sm text-gray-600">{students.length} siswa</span>
+              <Users className="w-4 h-4 lg:w-5 lg:h-5 text-gray-500" />
+              <span className="text-xs lg:text-sm text-gray-600">{students.length} siswa</span>
             </div>
           </div>
         </CardHeader>
@@ -247,37 +247,37 @@ export function Students() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 font-medium text-gray-900">Nama</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-900">NIS</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-900">Kelas</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-900">Tanggal Dibuat</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-900">Aksi</th>
+                  <th className="text-left py-3 px-2 lg:px-4 font-medium text-gray-900 text-sm">Nama</th>
+                  <th className="text-left py-3 px-2 lg:px-4 font-medium text-gray-900 text-sm">NIS</th>
+                  <th className="text-left py-3 px-2 lg:px-4 font-medium text-gray-900 text-sm">Kelas</th>
+                  <th className="text-left py-3 px-2 lg:px-4 font-medium text-gray-900 text-sm hidden sm:table-cell">Tanggal Dibuat</th>
+                  <th className="text-left py-3 px-2 lg:px-4 font-medium text-gray-900 text-sm">Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 {students.map((student) => (
                   <tr key={student.id} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-3 px-4 font-medium text-gray-900">{student.name}</td>
-                    <td className="py-3 px-4 text-gray-600">{student.nis}</td>
-                    <td className="py-3 px-4 text-gray-600">{student.class?.name || '-'}</td>
-                    <td className="py-3 px-4 text-gray-600">
+                    <td className="py-3 px-2 lg:px-4 font-medium text-gray-900 text-sm">{student.name}</td>
+                    <td className="py-3 px-2 lg:px-4 text-gray-600 text-sm">{student.nis}</td>
+                    <td className="py-3 px-2 lg:px-4 text-gray-600 text-sm">{student.class?.name || '-'}</td>
+                    <td className="py-3 px-2 lg:px-4 text-gray-600 text-sm hidden sm:table-cell">
                       {new Date(student.created_at).toLocaleDateString('id-ID')}
                     </td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center space-x-2">
+                    <td className="py-3 px-2 lg:px-4">
+                      <div className="flex items-center space-x-1 lg:space-x-2">
                         <Button
                           variant="secondary"
                           size="sm"
                           onClick={() => handleEdit(student)}
                         >
-                          <Edit className="w-4 h-4" />
+                          <Edit className="w-3 h-3 lg:w-4 lg:h-4" />
                         </Button>
                         <Button
                           variant="danger"
                           size="sm"
                           onClick={() => handleDelete(student.id)}
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-3 h-3 lg:w-4 lg:h-4" />
                         </Button>
                       </div>
                     </td>
@@ -289,9 +289,9 @@ export function Students() {
 
           {students.length === 0 && (
             <div className="text-center py-8">
-              <Users className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500">Belum ada siswa yang terdaftar.</p>
-              <Button onClick={() => setShowModal(true)} className="mt-4">
+              <Users className="w-8 h-8 lg:w-12 lg:h-12 text-gray-400 mx-auto mb-4" />
+              <p className="text-gray-500 mb-4">Belum ada siswa yang terdaftar.</p>
+              <Button onClick={() => setShowModal(true)} className="w-full sm:w-auto">
                 Tambah Siswa Pertama
               </Button>
             </div>
@@ -331,7 +331,7 @@ export function Students() {
             required
           />
           
-          <div className="flex justify-end space-x-2">
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-2">
             <Button
               type="button"
               variant="secondary"
@@ -340,10 +340,11 @@ export function Students() {
                 setEditingStudent(null)
                 setFormData({ name: '', nis: '', class_id: '' })
               }}
+              className="w-full sm:w-auto"
             >
               Batal
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="w-full sm:w-auto">
               {editingStudent ? 'Update' : 'Tambah'}
             </Button>
           </div>
@@ -372,18 +373,19 @@ export function Students() {
               type="file"
               accept=".xlsx,.xls"
               onChange={handleFileUpload}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
             <p className="text-xs text-gray-500 mt-1">
               Format: kolom 'nama' dan 'nis' harus ada
             </p>
           </div>
           
-          <div className="flex justify-end space-x-2">
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-2">
             <Button
               type="button"
               variant="secondary"
               onClick={() => setShowImportModal(false)}
+              className="w-full sm:w-auto"
             >
               Batal
             </Button>

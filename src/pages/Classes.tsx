@@ -105,32 +105,34 @@ export function Classes() {
 
   if (loading) {
     return (
-      <div className="space-y-6">
-        <h1 className="text-2xl font-bold text-gray-900">Kelas</h1>
+      <div className="space-y-4 lg:space-y-6">
+        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Kelas</h1>
         <div className="animate-pulse">
-          <div className="h-32 bg-gray-200 rounded-lg"></div>
+          <div className="h-24 lg:h-32 bg-gray-200 rounded-lg"></div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Kelas</h1>
-        <Button onClick={() => setShowModal(true)}>
+    <div className="space-y-4 lg:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Kelas</h1>
+        <Button onClick={() => setShowModal(true)} className="w-full sm:w-auto">
           <Plus className="w-4 h-4 mr-2" />
           Tambah Kelas
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         {classes.map((classItem) => (
           <Card key={classItem.id} className="hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-900">{classItem.name}</h3>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                <h3 className="text-base lg:text-lg font-semibold text-gray-900 truncate pr-2">
+                  {classItem.name}
+                </h3>
+                <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
                   classItem.is_active 
                     ? 'bg-green-100 text-green-800' 
                     : 'bg-gray-100 text-gray-800'
@@ -140,8 +142,8 @@ export function Classes() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <p className="text-xs lg:text-sm text-gray-600">
                   Dibuat: {new Date(classItem.created_at).toLocaleDateString('id-ID')}
                 </p>
                 <div className="flex items-center space-x-2">
@@ -149,6 +151,7 @@ export function Classes() {
                     variant="secondary"
                     size="sm"
                     onClick={() => handleEdit(classItem)}
+                    className="flex-1 sm:flex-none"
                   >
                     <Edit className="w-4 h-4" />
                   </Button>
@@ -156,6 +159,7 @@ export function Classes() {
                     variant="danger"
                     size="sm"
                     onClick={() => handleDelete(classItem.id)}
+                    className="flex-1 sm:flex-none"
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>
@@ -169,8 +173,8 @@ export function Classes() {
       {classes.length === 0 && (
         <Card>
           <CardContent className="text-center py-8">
-            <p className="text-gray-500">Belum ada kelas yang dibuat.</p>
-            <Button onClick={() => setShowModal(true)} className="mt-4">
+            <p className="text-gray-500 mb-4">Belum ada kelas yang dibuat.</p>
+            <Button onClick={() => setShowModal(true)} className="w-full sm:w-auto">
               Tambah Kelas Pertama
             </Button>
           </CardContent>
@@ -207,7 +211,7 @@ export function Classes() {
             </label>
           </div>
           
-          <div className="flex justify-end space-x-2">
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-2">
             <Button
               type="button"
               variant="secondary"
@@ -216,10 +220,11 @@ export function Classes() {
                 setEditingClass(null)
                 setFormData({ name: '', is_active: true })
               }}
+              className="w-full sm:w-auto"
             >
               Batal
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="w-full sm:w-auto">
               {editingClass ? 'Update' : 'Tambah'}
             </Button>
           </div>

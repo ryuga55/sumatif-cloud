@@ -75,13 +75,13 @@ export function Dashboard() {
 
   if (loading) {
     return (
-      <div className="space-y-6">
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="space-y-4 lg:space-y-6">
+        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Dashboard</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {[...Array(6)].map((_, i) => (
             <Card key={i} className="animate-pulse">
-              <CardContent className="p-6">
-                <div className="h-16 bg-gray-200 rounded"></div>
+              <CardContent className="p-4 lg:p-6">
+                <div className="h-12 lg:h-16 bg-gray-200 rounded"></div>
               </CardContent>
             </Card>
           ))}
@@ -91,25 +91,25 @@ export function Dashboard() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600">Selamat datang kembali!</p>
+    <div className="space-y-4 lg:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Dashboard</h1>
+        <p className="text-sm lg:text-base text-gray-600">Selamat datang kembali!</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         {statCards.map((card, index) => {
           const Icon = card.icon
           return (
             <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
+              <CardContent className="p-4 lg:p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">{card.label}</p>
-                    <p className="text-2xl font-bold text-gray-900">{card.value}</p>
+                    <p className="text-xs lg:text-sm font-medium text-gray-600">{card.label}</p>
+                    <p className="text-xl lg:text-2xl font-bold text-gray-900">{card.value}</p>
                   </div>
-                  <div className={`p-3 rounded-full ${card.color}`}>
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className={`p-2 lg:p-3 rounded-full ${card.color}`}>
+                    <Icon className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                   </div>
                 </div>
               </CardContent>
@@ -118,19 +118,19 @@ export function Dashboard() {
         })}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         <Card>
           <CardHeader>
-            <h3 className="text-lg font-semibold text-gray-900">Aktivitas Terbaru</h3>
+            <h3 className="text-base lg:text-lg font-semibold text-gray-900">Aktivitas Terbaru</h3>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
                 <p className="text-sm text-gray-600">Sistem berhasil dimuat</p>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                 <p className="text-sm text-gray-600">Dashboard siap digunakan</p>
               </div>
             </div>
@@ -139,17 +139,17 @@ export function Dashboard() {
 
         <Card>
           <CardHeader>
-            <h3 className="text-lg font-semibold text-gray-900">Quick Actions</h3>
+            <h3 className="text-base lg:text-lg font-semibold text-gray-900">Quick Actions</h3>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
               <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                <p className="font-medium">Tambah Siswa Baru</p>
-                <p className="text-sm text-gray-600">Daftarkan siswa ke kelas</p>
+                <p className="font-medium text-sm lg:text-base">Tambah Siswa Baru</p>
+                <p className="text-xs lg:text-sm text-gray-600">Daftarkan siswa ke kelas</p>
               </button>
               <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                <p className="font-medium">Input Nilai</p>
-                <p className="text-sm text-gray-600">Masukkan nilai siswa</p>
+                <p className="font-medium text-sm lg:text-base">Input Nilai</p>
+                <p className="text-xs lg:text-sm text-gray-600">Masukkan nilai siswa</p>
               </button>
             </div>
           </CardContent>
