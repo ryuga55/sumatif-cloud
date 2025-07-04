@@ -71,7 +71,7 @@ export function LandingPage() {
     {
       quote: "Platform yang luar biasa! Fitur input nilai spreadsheet sangat membantu untuk mengelola ratusan siswa.",
       name: "Siti Nurhaliza",
-      role: "Guru Bahasa Indonesia, SMP Negeri 5",
+      role: "Guru Bahasa Indonesia",
       rating: 5
     }
   ]
