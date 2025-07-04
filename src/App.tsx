@@ -6,6 +6,7 @@ import { supabase } from './lib/supabase'
 import { AuthForm } from './components/auth/AuthForm'
 import { LicenseVerification } from './components/auth/LicenseVerification'
 import { Layout } from './components/ui/Layout'
+import { LandingPage } from './pages/LandingPage'
 import { Dashboard } from './pages/Dashboard'
 import { AdminDashboard } from './pages/AdminDashboard'
 import { Classes } from './pages/Classes'
@@ -89,88 +90,145 @@ function App() {
     )
   }
 
-  // Not authenticated
-  if (!user) {
-    return (
-      <>
-        <AuthForm />
-        <Toaster position="top-right" />
-      </>
-    )
-  }
-
-  // Email not verified
-  if (!user.email_confirmed_at) {
-    return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-        <div className="flex-1 flex items-center justify-center px-4 py-12">
-          <div className="w-full max-w-md">
-            {/* Branding Section */}
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-slate-700 mb-3 tracking-tight">
-                SUMATIF CLOUD
-              </h1>
-              <p className="text-lg text-slate-500 font-medium">
-                Terhubung. Tersimpan. Tertata.
-              </p>
-            </div>
-
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-8 text-center">
-              <h2 className="text-2xl font-bold text-slate-800 mb-4">
-                Verifikasi Email
-              </h2>
-              <p className="text-slate-600">
-                Silakan cek email Anda dan klik link verifikasi untuk melanjutkan.
-              </p>
-            </div>
-          </div>
-        </div>
-        <footer className="py-6 text-center">
-          <p className="text-sm text-slate-400">
-            © {new Date().getFullYear()} • Created with ☕ by Rudy Susanto
-          </p>
-        </footer>
-        <Toaster position="top-right" />
-      </div>
-    )
-  }
-
-  // User needs license verification
-  if (userProfile && userProfile.role === 'user' && !userProfile.license_key) {
-    return (
-      <>
-        <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} />
-        <Toaster position="top-right" />
-      </>
-    )
-  }
-
-  // Admin or verified user
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route 
-            path="/dashboard" 
-            element={
-              userProfile?.role === 'admin' ? <AdminDashboard /> : <Dashboard />
-            } 
-          />
-          <Route path="/classes" element={<Classes />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/subjects" element={<Subjects />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/weights" element={<Weights />} />
-          <Route path="/scores" element={<Scores />} />
-          <Route path="/attendance" element={<AttendancePage />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/attendance-reports" element={<AttendanceReports />} />
-          <Route path="/backup" element={<Backup />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        {/* Landing Page - accessible to everyone */}
+        <Route path="/" element={<LandingPage />} />
+        
+        {/* Authentication required routes */}
+        <Route path="/auth" element={
+          !user ? <AuthForm /> : <Navigate to="/dashboard" replace />
+        } />
+        
+        {/* Protected routes */}
+        <Route path="/dashboard" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout>
+            {userProfile?.role === 'admin' ? <AdminDashboard /> : <Dashboard />}
+          </Layout>
+        } />
+        
+        <Route path="/classes" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Classes /></Layout>
+        } />
+        
+        <Route path="/students" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Students /></Layout>
+        } />
+        
+        <Route path="/subjects" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Subjects /></Layout>
+        } />
+        
+        <Route path="/categories" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Categories /></Layout>
+        } />
+        
+        <Route path="/weights" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Weights /></Layout>
+        } />
+        
+        <Route path="/scores" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Scores /></Layout>
+        } />
+        
+        <Route path="/attendance" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><AttendancePage /></Layout>
+        } />
+        
+        <Route path="/reports" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Reports /></Layout>
+        } />
+        
+        <Route path="/attendance-reports" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><AttendanceReports /></Layout>
+        } />
+        
+        <Route path="/backup" element={
+          !user ? <Navigate to="/auth" replace /> :
+          !user.email_confirmed_at ? <EmailVerificationPage /> :
+          userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
+            <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
+          <Layout><Backup /></Layout>
+        } />
+      </Routes>
       <Toaster position="top-right" />
     </Router>
+  )
+}
+
+// Email Verification Component
+function EmailVerificationPage() {
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="flex-1 flex items-center justify-center px-4 py-12">
+        <div className="w-full max-w-md">
+          {/* Branding Section */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-slate-700 mb-3 tracking-tight">
+              SUMATIF CLOUD
+            </h1>
+            <p className="text-lg text-slate-500 font-medium">
+              Terhubung. Tersimpan. Tertata.
+            </p>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-slate-800 mb-4">
+              Verifikasi Email
+            </h2>
+            <p className="text-slate-600">
+              Silakan cek email Anda dan klik link verifikasi untuk melanjutkan.
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer className="py-6 text-center">
+        <p className="text-sm text-slate-400">
+          © {new Date().getFullYear()} • Created with ☕ by Rudy Susanto
+        </p>
+      </footer>
+    </div>
   )
 }
 
