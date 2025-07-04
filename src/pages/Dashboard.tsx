@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { Card, CardContent, CardHeader } from '../components/ui/Card'
+import { InstallButton, InstallPrompt } from '../components/ui/InstallButton'
 import { Users, BookOpen, GraduationCap, FileText } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 
@@ -92,10 +93,15 @@ export function Dashboard() {
 
   return (
     <div className="space-y-4 lg:space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-sm lg:text-base text-gray-600">Selamat datang kembali!</p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-sm lg:text-base text-gray-600">Selamat datang kembali!</p>
+        </div>
+        <InstallButton />
       </div>
+
+      <InstallPrompt />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         {statCards.map((card, index) => {
