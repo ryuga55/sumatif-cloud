@@ -40,10 +40,10 @@ export function useAuth() {
       async (event, session) => {
         if (!mounted) return
 
+        console.log('Auth state changed:', event, session?.user?.email)
+
         // Handle signed out state explicitly
         if (event === 'SIGNED_OUT') {
-          // Ensure we clear any lingering tokens
-          await supabase.auth.signOut()
           setUser(null)
         } else if (event === 'TOKEN_REFRESHED' || event === 'SIGNED_IN') {
           setUser(session?.user ?? null)
@@ -63,7 +63,16 @@ export function useAuth() {
 
   const signOut = async () => {
     try {
-      await supabase.auth.signOut()
+      // Immediately set user to null for instant UI update
+      setUser(null)
+      
+      // Then perform the actual sign out
+      const { error } = await supabase.auth.signOut()
+      
+      if (error) {
+        console.warn('Sign out error:', error)
+        // Even if there's an error, keep user as null since we want to log out
+      }
     } catch (error) {
       console.warn('Sign out error:', error)
       // Force clear user state even if signOut fails
