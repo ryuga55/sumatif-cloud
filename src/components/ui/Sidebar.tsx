@@ -10,7 +10,7 @@ import {
   Calendar,
   BarChart3,
   Download,
-  Settings
+  ClipboardList
 } from 'lucide-react'
 
 const menuItems = [
@@ -23,6 +23,7 @@ const menuItems = [
   { icon: FileText, label: 'Input Nilai', path: '/scores' },
   { icon: Calendar, label: 'Input Kehadiran', path: '/attendance' },
   { icon: BarChart3, label: 'Rekap Nilai', path: '/reports' },
+  { icon: ClipboardList, label: 'Rekap Kehadiran', path: '/attendance-reports' },
   { icon: Download, label: 'Backup & Restore', path: '/backup' },
 ]
 

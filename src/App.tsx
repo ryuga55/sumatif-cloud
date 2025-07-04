@@ -16,6 +16,7 @@ import { Weights } from './pages/Weights'
 import { Scores } from './pages/Scores'
 import { AttendancePage } from './pages/Attendance'
 import { Reports } from './pages/Reports'
+import { AttendanceReports } from './pages/AttendanceReports'
 import { Backup } from './pages/Backup'
 
 function App() {
@@ -164,6 +165,7 @@ function App() {
           <Route path="/scores" element={<Scores />} />
           <Route path="/attendance" element={<AttendancePage />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/attendance-reports" element={<AttendanceReports />} />
           <Route path="/backup" element={<Backup />} />
         </Routes>
       </Layout>
