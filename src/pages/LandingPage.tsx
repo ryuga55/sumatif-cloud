@@ -77,22 +77,22 @@ export function LandingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-sans">
       {/* Navigation */}
       <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-blue-600">SUMATIF CLOUD</h1>
+              <h1 className="text-xl font-bold text-blue-600">SUMATIF CLOUD</h1>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors">Fitur</a>
-              <a href="#benefits" className="text-gray-700 hover:text-blue-600 transition-colors">Keunggulan</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors">Testimoni</a>
+              <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">Fitur</a>
+              <a href="#benefits" className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">Keunggulan</a>
+              <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">Testimoni</a>
               <Link to="/dashboard">
-                <Button variant="primary">Masuk ke Aplikasi</Button>
+                <Button variant="primary" size="sm">Masuk ke Aplikasi</Button>
               </Link>
             </div>
 
@@ -111,11 +111,11 @@ export function LandingPage() {
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-4">
-                <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors">Fitur</a>
-                <a href="#benefits" className="text-gray-700 hover:text-blue-600 transition-colors">Keunggulan</a>
-                <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors">Testimoni</a>
+                <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">Fitur</a>
+                <a href="#benefits" className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">Keunggulan</a>
+                <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">Testimoni</a>
                 <Link to="/dashboard">
-                  <Button variant="primary" className="w-full">Masuk ke Aplikasi</Button>
+                  <Button variant="primary" className="w-full" size="sm">Masuk ke Aplikasi</Button>
                 </Link>
               </div>
             </div>
@@ -124,33 +124,33 @@ export function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20 lg:py-32">
+      <section className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
               SUMATIF CLOUD
               <span className="block text-blue-600 mt-2">Kelola Nilai & Kehadiran</span>
-              <span className="block text-gray-700 text-3xl md:text-4xl mt-2">dengan Mudah</span>
+              <span className="block text-gray-700 text-2xl md:text-3xl lg:text-4xl mt-2 font-semibold">dengan Mudah</span>
             </h1>
             
-            <p className="text-xl text-gray-600 mt-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 mt-6 max-w-3xl mx-auto leading-relaxed">
               Platform terintegrasi untuk guru dan sekolah modern. Kelola data siswa, input nilai, 
               catat kehadiran, dan generate laporan dengan mudah dan efisien.
             </p>
             
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/dashboard">
-                <Button size="lg" className="w-full sm:w-auto px-8 py-4 text-lg">
+                <Button size="lg" className="w-full sm:w-auto px-6 py-3 text-base font-medium">
                   Mulai Sekarang!
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-8 py-4 text-lg">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-6 py-3 text-base font-medium">
                 Lihat Demo
               </Button>
             </div>
 
-            <p className="text-sm text-gray-500 mt-4">
+            <p className="text-sm text-gray-500 mt-4 font-medium">
               ✨ Terhubung. Tersimpan. Tertata. ✨
             </p>
           </div>
@@ -165,13 +165,13 @@ export function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
               Fitur Unggulan Kami
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Solusi lengkap untuk manajemen sekolah modern dengan teknologi terdepan
             </p>
           </div>
@@ -181,14 +181,14 @@ export function LandingPage() {
               const Icon = feature.icon
               return (
                 <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg">
-                  <CardContent className="p-8 text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
-                      <Icon className="w-8 h-8 text-blue-600" />
+                  <CardContent className="p-6 text-center">
+                    <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-100 rounded-full mb-4">
+                      <Icon className="w-7 h-7 text-blue-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed text-sm">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -200,26 +200,26 @@ export function LandingPage() {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-gray-50">
+      <section id="benefits" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
               Mengapa Memilih SUMATIF CLOUD?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Keunggulan yang membuat kami menjadi pilihan utama ribuan guru di Indonesia
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon
               return (
                 <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
-                    <Icon className="w-8 h-8 text-green-600" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-green-100 rounded-full mb-4">
+                    <Icon className="w-7 h-7 text-green-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  <h3 className="text-base font-semibold text-gray-900 mb-2">
                     {benefit.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -233,13 +233,13 @@ export function LandingPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white">
+      <section id="testimonials" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
               Apa Kata Pengguna Kami?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Testimoni dari guru-guru yang telah merasakan manfaat SUMATIF CLOUD
             </p>
           </div>
@@ -247,18 +247,18 @@ export function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow border-0 shadow-md">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-4">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-3">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <blockquote className="text-lg italic text-gray-700 mb-6 leading-relaxed">
+                  <blockquote className="text-base italic text-gray-700 mb-4 leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
                   <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    <p className="font-semibold text-gray-900 text-sm">{testimonial.name}</p>
+                    <p className="text-xs text-gray-600">{testimonial.role}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -268,22 +268,22 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Siap Mengoptimalkan Manajemen Sekolah Anda?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
             Bergabunglah dengan ribuan guru yang telah merasakan kemudahan mengelola kelas dengan SUMATIF CLOUD
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/dashboard">
-              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-8 py-4 text-lg bg-white text-blue-600 hover:bg-gray-50">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-6 py-3 text-base font-medium bg-white text-blue-600 hover:bg-gray-50">
                 Daftar Sekarang
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <Button variant="secondary" size="lg" className="w-full sm:w-auto px-8 py-4 text-lg bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600">
+            <Button variant="secondary" size="lg" className="w-full sm:w-auto px-6 py-3 text-base font-medium bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600">
               Hubungi Kami
             </Button>
           </div>
@@ -291,22 +291,22 @@ export function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300 py-12">
+      <footer className="bg-gray-800 text-gray-300 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
-              <h3 className="text-2xl font-bold text-white mb-4">SUMATIF CLOUD</h3>
-              <p className="text-gray-400 mb-4 max-w-md">
+              <h3 className="text-xl font-bold text-white mb-3">SUMATIF CLOUD</h3>
+              <p className="text-gray-400 mb-3 max-w-md text-sm">
                 Platform manajemen sekolah terdepan yang membantu guru dan sekolah 
                 mengelola data siswa, nilai, dan kehadiran dengan mudah dan efisien.
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 font-medium">
                 Terhubung. Tersimpan. Tertata.
               </p>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Fitur</h4>
+              <h4 className="text-base font-semibold text-white mb-3">Fitur</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="#" className="hover:text-white transition-colors">Manajemen Siswa</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Input Nilai</a></li>
@@ -316,7 +316,7 @@ export function LandingPage() {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Dukungan</h4>
+              <h4 className="text-base font-semibold text-white mb-3">Dukungan</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="#" className="hover:text-white transition-colors">Bantuan</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Kontak</a></li>
@@ -326,7 +326,7 @@ export function LandingPage() {
             </div>
           </div>
           
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+          <div className="border-t border-gray-700 mt-8 pt-6 text-center">
             <p className="text-sm text-gray-400">
               © {new Date().getFullYear()} SUMATIF CLOUD. All rights reserved. • Created with ☕ by Rudy Susanto
             </p>
