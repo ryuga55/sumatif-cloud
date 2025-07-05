@@ -9,7 +9,6 @@ import { Layout } from './components/ui/Layout'
 import { LandingPage } from './pages/LandingPage'
 import { Dashboard } from './pages/Dashboard'
 import { AdminDashboard } from './pages/AdminDashboard'
-import { UserApproval } from './pages/UserApproval'
 import { Classes } from './pages/Classes'
 import { Students } from './pages/Students'
 import { Subjects } from './pages/Subjects'
@@ -92,7 +91,7 @@ function App() {
   }
 
   return (
-    <Router basename="/">
+    <Router>
       <Routes>
         {/* Landing Page - accessible to everyone */}
         <Route path="/" element={<LandingPage />} />
@@ -112,22 +111,12 @@ function App() {
             {userProfile?.role === 'admin' ? <AdminDashboard /> : <Dashboard />}
           </Layout>
         } />
-
-        {/* Admin-only routes */}
-        <Route path="/user-approval" element={
-          !user ? <Navigate to="/auth" replace /> :
-          !user.email_confirmed_at ? <EmailVerificationPage /> :
-          userProfile?.role !== 'admin' ? <Navigate to="/dashboard" replace /> :
-          <Layout><UserApproval /></Layout>
-        } />
         
-        {/* User routes */}
         <Route path="/classes" element={
           !user ? <Navigate to="/auth" replace /> :
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Classes /></Layout>
         } />
         
@@ -136,7 +125,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Students /></Layout>
         } />
         
@@ -145,7 +133,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Subjects /></Layout>
         } />
         
@@ -154,7 +141,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Categories /></Layout>
         } />
         
@@ -163,7 +149,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Weights /></Layout>
         } />
         
@@ -172,7 +157,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Scores /></Layout>
         } />
         
@@ -181,7 +165,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><AttendancePage /></Layout>
         } />
         
@@ -190,7 +173,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Reports /></Layout>
         } />
         
@@ -199,7 +181,6 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><AttendanceReports /></Layout>
         } />
         
@@ -208,12 +189,8 @@ function App() {
           !user.email_confirmed_at ? <EmailVerificationPage /> :
           userProfile && userProfile.role === 'user' && !userProfile.license_key ? 
             <LicenseVerification userId={user.id} onSuccess={fetchUserProfile} /> :
-          userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Backup /></Layout>
         } />
-
-        {/* Catch all route - redirect to home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster position="top-right" />
     </Router>

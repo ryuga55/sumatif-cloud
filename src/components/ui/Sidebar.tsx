@@ -10,12 +10,22 @@ import {
   Calendar,
   BarChart3,
   Download,
-  ClipboardList,
-  UserPlus
+  ClipboardList
 } from 'lucide-react'
-import { useAuth } from '../../hooks/useAuth'
-import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/supabase'
+
+const menuItems = [
+  { icon: Home, label: 'Dashboard', path: '/dashboard' },
+  { icon: Users, label: 'Kelas', path: '/classes' },
+  { icon: UserCheck, label: 'Siswa', path: '/students' },
+  { icon: BookOpen, label: 'Mata Pelajaran', path: '/subjects' },
+  { icon: Tags, label: 'Kategori Penilaian', path: '/categories' },
+  { icon: Scale, label: 'Bobot Penilaian', path: '/weights' },
+  { icon: FileText, label: 'Input Nilai', path: '/scores' },
+  { icon: Calendar, label: 'Input Kehadiran', path: '/attendance' },
+  { icon: BarChart3, label: 'Rekap Nilai', path: '/reports' },
+  { icon: ClipboardList, label: 'Rekap Kehadiran', path: '/attendance-reports' },
+  { icon: Download, label: 'Backup & Restore', path: '/backup' },
+]
 
 interface SidebarProps {
   sidebarOpen: boolean
@@ -24,52 +34,6 @@ interface SidebarProps {
 
 export function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   const location = useLocation()
-  const { user } = useAuth()
-  const [userProfile, setUserProfile] = useState<any>(null)
-
-  useEffect(() => {
-    if (user) {
-      fetchUserProfile()
-    }
-  }, [user])
-
-  const fetchUserProfile = async () => {
-    if (!user) return
-
-    try {
-      const { data, error } = await supabase
-        .from('users')
-        .select('*')
-        .eq('id', user.id)
-        .single()
-
-      if (error) throw error
-      setUserProfile(data)
-    } catch (error) {
-      console.error('Error fetching user profile:', error)
-    }
-  }
-
-  const adminMenuItems = [
-    { icon: Home, label: 'Dashboard', path: '/dashboard' },
-    { icon: UserPlus, label: 'User Approval', path: '/user-approval' },
-  ]
-
-  const userMenuItems = [
-    { icon: Home, label: 'Dashboard', path: '/dashboard' },
-    { icon: Users, label: 'Kelas', path: '/classes' },
-    { icon: UserCheck, label: 'Siswa', path: '/students' },
-    { icon: BookOpen, label: 'Mata Pelajaran', path: '/subjects' },
-    { icon: Tags, label: 'Kategori Penilaian', path: '/categories' },
-    { icon: Scale, label: 'Bobot Penilaian', path: '/weights' },
-    { icon: FileText, label: 'Input Nilai', path: '/scores' },
-    { icon: Calendar, label: 'Input Kehadiran', path: '/attendance' },
-    { icon: BarChart3, label: 'Rekap Nilai', path: '/reports' },
-    { icon: ClipboardList, label: 'Rekap Kehadiran', path: '/attendance-reports' },
-    { icon: Download, label: 'Backup & Restore', path: '/backup' },
-  ]
-
-  const menuItems = userProfile?.role === 'admin' ? adminMenuItems : userMenuItems
 
   return (
     <>

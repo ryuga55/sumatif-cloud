@@ -64,14 +64,14 @@ export function LandingPage() {
   const testimonials = [
     {
       quote: "SUMATIF CLOUD benar-benar mengubah cara saya mengelola kelas. Sangat intuitif dan menghemat banyak waktu!",
-      name: "Imam Santoso",
-      role: "Guru Matematika",
+      name: "Budi Santoso",
+      role: "Guru Matematika, SMA Negeri 1",
       rating: 5
     },
     {
       quote: "Platform yang luar biasa! Fitur input nilai spreadsheet sangat membantu untuk mengelola ratusan siswa.",
       name: "Siti Nurhaliza",
-      role: "Guru Bahasa Indonesia",
+      role: "Guru Bahasa Indonesia, SMP Negeri 5",
       rating: 5
     }
   ]
@@ -141,7 +141,7 @@ export function LandingPage() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/dashboard">
                 <Button size="lg" className="w-full sm:w-auto px-8 py-4 text-lg">
-                  Mulai Sekarang!
+                  Mulai Gratis
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
