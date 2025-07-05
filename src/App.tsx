@@ -92,7 +92,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         {/* Landing Page - accessible to everyone */}
         <Route path="/" element={<LandingPage />} />
@@ -211,6 +211,9 @@ function App() {
           userProfile?.role === 'admin' ? <Navigate to="/dashboard" replace /> :
           <Layout><Backup /></Layout>
         } />
+
+        {/* Catch all route - redirect to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster position="top-right" />
     </Router>
