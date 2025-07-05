@@ -141,7 +141,7 @@ export function LandingPage() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/dashboard">
                 <Button size="lg" className="w-full sm:w-auto px-8 py-4 text-lg">
-                  Mulai Gratis
+                  Mulai Sekarang!
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
