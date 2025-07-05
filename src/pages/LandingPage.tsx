@@ -64,8 +64,8 @@ export function LandingPage() {
   const testimonials = [
     {
       quote: "SUMATIF CLOUD benar-benar mengubah cara saya mengelola kelas. Sangat intuitif dan menghemat banyak waktu!",
-      name: "Budi Santoso",
-      role: "Guru Matematika, SMA Negeri 1",
+      name: "Imam Santoso",
+      role: "Guru Matematika",
       rating: 5
     },
     {
