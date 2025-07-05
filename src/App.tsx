@@ -50,19 +50,19 @@ function App() {
         // User exists
         setUserProfile(data[0])
       } else {
-        // User doesn't exist in users table, create it using upsert to handle race conditions
-        const { data: newUser, error: upsertError } = await supabase
+        // User doesn't exist in users table, create it
+        const { data: newUser, error: insertError } = await supabase
           .from('users')
-          .upsert([{
+          .insert([{
             id: user.id,
             email: user.email,
             role: 'user',
             verified: user.email_confirmed_at ? true : false
-          }], { onConflict: 'id' })
+          }])
           .select('*')
           .single()
 
-        if (upsertError) throw upsertError
+        if (insertError) throw insertError
         setUserProfile(newUser)
       }
     } catch (error: any) {
